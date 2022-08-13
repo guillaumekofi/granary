@@ -3,6 +3,8 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import NewsFeed from "./pages/newsFeed/NewsFeed";
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
+import Signup from "./pages/signup/Signup";
+import Login from "./pages/login/Login";
 
 function App() {
   return (
@@ -13,6 +15,8 @@ function App() {
           <Navbar />
           <Routes>
             <Route path="/" element={<NewsFeed />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/login" element={<Login />} />
           </Routes>
         </div>
       </BrowserRouter>
