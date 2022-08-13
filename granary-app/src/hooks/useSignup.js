@@ -10,7 +10,7 @@ import { doc, setDoc } from 'firebase/firestore';
 const useSignup = () => {
   // handle errors during signups
   const [error, setError] = useState(null);
-  const [isPending, setIsPending] = useState(true);
+  const [isPending, setIsPending] = useState(false);
 
   // this function calls firebase auth
   // to sign up the user
@@ -49,11 +49,11 @@ const useSignup = () => {
       // set signup error message
       console.log(err)
       setError(err.message);
-      setIsPending(false); // chane isPending state
+      setIsPending(false); // change isPending state
     }
   };
 
-  return { error, isPending, signup };
+  return { error, setError, isPending, signup };
 
 };
 
