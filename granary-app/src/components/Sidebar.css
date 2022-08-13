@@ -19,6 +19,14 @@
     padding: 40px 30px;
     border-bottom: 1px solid rgba(255,255,255,0.2);
 }
+.sidebar .user a {
+    color: #ddd;
+    font-size: 14px;
+}
+.sidebar .user a:hover {
+    color: #fff;
+    text-decoration: none;
+}
 .sidebar .links {
     margin-top: 80px;
     margin-left: 20px;
@@ -41,6 +49,7 @@
 .sidebar .links a.active {
     color: #555;
     background: var(--bg-color);
+    border-bottom-left-radius: 15px;
 }
 .sidebar .links .active img {
     filter: invert(40%);
