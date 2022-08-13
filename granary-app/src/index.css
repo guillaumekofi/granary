@@ -66,3 +66,14 @@ input, textarea {
 textarea {
     min-height: 160px;
 }
+
+.form-error {
+    color: #94404f;
+    font-weight: bold;
+}
+
+.text-info {
+    color: #09d1db;
+    font-weight: bold;
+}
+
