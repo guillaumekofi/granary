@@ -1,0 +1,30 @@
+/* success, info and error alert box styles */
+.error {
+    padding: 8px;
+    margin: 10px 0;
+    color: #f24d16;
+    /*background: #faedf8;*/
+    border-bottom: 2px solid #f24d16;
+    border-left: 2px solid #f24d16;
+    border-bottom-left-radius: 15px;
+    word-wrap: break-word;
+    /*line-height: 25px;*/
+    font-size: 15px;
+    font-weight: bold;
+}
+.success {
+    border-radius: 4px;
+    padding: 8px;
+    margin: 10px 0;
+    color: #07a862;
+    background: #d4faea;
+    border: 1px solid #07a862;
+}
+.info {
+    border-radius: 4px;
+    padding: 8px;
+    margin: 10px 0;
+    color: #077070;
+    background: #f2f7f7;
+    border: 1px solid #077070;
+}
