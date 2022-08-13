@@ -35,7 +35,8 @@ const useSignup = () => {
       const userRef = await doc(db, 'users', res.user.uid); // get user uid and document
       await setDoc(userRef, {
         firstName,
-        lastName
+        lastName,
+        online: false
       }); // update user name
 
 
