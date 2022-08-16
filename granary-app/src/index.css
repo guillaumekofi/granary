@@ -8,6 +8,7 @@
     --primary-color: #1bab20;
     --highlight-color: #18c499;
     --bg-color: #f4f4f4;
+    --error-color: #f24d16;
 }
 
 /* base styles */
@@ -75,5 +76,11 @@ textarea {
 .text-info {
     color: #09d1db;
     font-weight: bold;
+}
+
+.text-error {
+    color: var(--error-color);
+    font-weight: bold;
+    font-size: 14px;
 }
 
