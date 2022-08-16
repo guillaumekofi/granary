@@ -11,9 +11,36 @@ const Signup = () => {
   const [password, setPassword] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
+  const [username, setUsername] = useState('');
+  const [profileImg, setProfileImg] = useState(null);
+  const [profileImgError, setProfileImgError] = useState(null);
 
   // get signup, error, and isPending
   const { error, setError, isPending, signup } = useSignup();
+
+  // handle image field
+  // image is not required
+  // onChange validate the image chosen by the user
+  const handleFileChange = (event) => {
+    setProfileImg(null)
+    let selected = event.target.files[0]
+
+    if (!selected) {
+      setProfileImgError("Please select a profile picture!")
+      return
+    }
+    if (!selected.type.includes("image")) {
+      setProfileImgError("Please select an image file!")
+      return
+    }
+    if (selected.size > 300000) {
+      setProfileImgError("Image file size must be less than 300 Kb")
+      return
+    }
+
+    setProfileImgError(null)
+    setProfileImg(selected);
+  }
 
   // function to handle form submission
   // includes form error handling
@@ -44,7 +71,20 @@ const Signup = () => {
       return
     }
 
-    signup(email, password, firstName, lastName)
+    if (!username) {
+      // reject submitting an empty username input field
+      setError("Username cannot be empty!");
+      return
+    }
+
+    if (username.length > 20) {
+      // reject submitting a username field with a text > 20 chars
+      setError("Username is too long. Must be less than 21 characters!");
+      return
+    }
+
+    // signup if there is no error
+    signup(email, password, firstName, lastName, username, profileImg);
   }
 
   return (
@@ -66,6 +106,22 @@ const Signup = () => {
           onChange={(e) => setLastName(e.target.value)}
           value={lastName}
         />
+      </label>
+      <label>
+        <span>Username:</span>
+        <input
+          type="text"
+          onChange={(e) => setUsername(e.target.value)}
+          value={username}
+        />
+      </label>
+      <label>
+        <span>Profile image:</span>
+        <input
+          type="file"
+          onChange={handleFileChange}
+        />
+        {profileImgError && <div className="text-error">{profileImgError}</div>}
       </label>
       <label>
         <span>Email:</span>
