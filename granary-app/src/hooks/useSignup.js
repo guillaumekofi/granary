@@ -1,5 +1,5 @@
 import { useState } from "react";
-import {Auth, db, Storage} from "../firebase/config";
+import {Auth, db, Storage, timestamp} from "../firebase/config";
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { doc, setDoc } from 'firebase/firestore';
@@ -50,7 +50,8 @@ const useSignup = () => {
         lastName,
         username,
         profileImgURL: imgUrl,
-        online: true
+        online: true,
+        dateJoined: timestamp.fromDate(new Date)
       });
 
       // dispatch signup action later
