@@ -2,7 +2,7 @@
 import Alert from "../../components/Alert";
 
 // react component import
-import {useState} from "react";
+import React, {useState} from "react";
 import useLogin from "../../hooks/useLogin";
 
 const Login = () => {
@@ -22,31 +22,38 @@ const Login = () => {
 
   return (
     // login form
-    <form className="auth-form" onSubmit={handleSubmit}>
-      <h2>Login</h2>
-      <label>
-        <span>Email:</span>
-        <input
-          type="email"
-          onChange={(e) => setEmail(e.target.value)}
-          value={email}
-        />
-      </label>
-      <label>
-        <span>Password:</span>
-        <input
-          type="password"
-          onChange={(e) => setPassword(e.target.value)}
-          value={password}
-        />
-      </label>
-      {/*display error*/}
-      {error && <Alert type="error" message={error}/>}
+    <div className="auth-form">
+      <form onSubmit={handleSubmit}>
+        <h2>Login</h2>
+        <label>
+          <span>Email:</span>
+          <input
+            type="email"
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
+          />
+        </label>
+        <label>
+          <span>Password:</span>
+          <input
+            type="password"
+            onChange={(e) => setPassword(e.target.value)}
+            value={password}
+          />
+        </label>
+        {/*display error*/}
+        {error && <Alert type="error" message={error}/>}
 
-      {/* show loading if isPending or show signup button*/}
-      {!isPending && <button className="btn">Login</button>}
-      {isPending && <p className="text-info">Please wait, We are logging you in ...</p>}
-    </form>
+        {/* show loading if isPending or show signup button*/}
+        {!isPending && <button className="btn">Login</button>}
+        {isPending && <p className="text-info">Please wait, We are logging you in ...</p>}
+      </form>
+
+      <p className="text-middle">Or signup with</p>
+
+      <button className="btn-social google">G | Google</button>
+      <button className="btn-social facebook">F | Facebook</button>
+    </div>
   );
 };
 
