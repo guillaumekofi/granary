@@ -4,6 +4,7 @@ import './Signup.css'
 import React, {useState} from 'react';
 import useSignup from "../../hooks/useSignup";
 import Alert from "../../components/Alert";
+import useGoogleSignup from "../../hooks/useGoogleSignup";
 
 const Signup = () => {
   // create states to handle form
@@ -17,6 +18,7 @@ const Signup = () => {
 
   // get signup, error, and isPending
   const { error, setError, isPending, signup } = useSignup();
+  // const { googleSignup } = useGoogleSignup();
 
   // handle image field
   // image is not required
@@ -89,63 +91,70 @@ const Signup = () => {
 
   return (
     // signup form
-    <form className="auth-form" onSubmit={handleSubmit}>
-      <h2>Sign up</h2>
-      <label>
-        <span>Firstname:</span>
-        <input
-          type="text"
-          onChange={(e) => setFirstName(e.target.value)}
-          value={firstName}
-        />
-      </label>
-      <label>
-        <span>Lastname:</span>
-        <input
-          type="text"
-          onChange={(e) => setLastName(e.target.value)}
-          value={lastName}
-        />
-      </label>
-      <label>
-        <span>Username:</span>
-        <input
-          type="text"
-          onChange={(e) => setUsername(e.target.value)}
-          value={username}
-        />
-      </label>
-      <label>
-        <span>Profile image:</span>
-        <input
-          type="file"
-          onChange={handleFileChange}
-        />
-        {profileImgError && <div className="text-error">{profileImgError}</div>}
-      </label>
-      <label>
-        <span>Email:</span>
-        <input
-          type="email"
-          onChange={(e) => setEmail(e.target.value)}
-          value={email}
-        />
-      </label>
-      <label>
-        <span>Password:</span>
-        <input
-          type="password"
-          onChange={(e) => setPassword(e.target.value)}
-          value={password}
-        />
-      </label>
-      {/*display error*/}
-      {error && <Alert type="error" message={error}/>}
+    <div className="auth-form">
+      <form onSubmit={handleSubmit}>
+        <h2>Sign up</h2>
+        <label>
+          <span>Firstname:</span>
+          <input
+            type="text"
+            onChange={(e) => setFirstName(e.target.value)}
+            value={firstName}
+          />
+        </label>
+        <label>
+          <span>Lastname:</span>
+          <input
+            type="text"
+            onChange={(e) => setLastName(e.target.value)}
+            value={lastName}
+          />
+        </label>
+        <label>
+          <span>Username:</span>
+          <input
+            type="text"
+            onChange={(e) => setUsername(e.target.value)}
+            value={username}
+          />
+        </label>
+        <label>
+          <span>Profile image:</span>
+          <input
+            type="file"
+            onChange={handleFileChange}
+          />
+          {profileImgError && <div className="text-error">{profileImgError}</div>}
+        </label>
+        <label>
+          <span>Email:</span>
+          <input
+            type="email"
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
+          />
+        </label>
+        <label>
+          <span>Password:</span>
+          <input
+            type="password"
+            onChange={(e) => setPassword(e.target.value)}
+            value={password}
+          />
+        </label>
+        {/*display error*/}
+        {error && <Alert type="error" message={error}/>}
 
-      {/* show loading if isPending or show signup button*/}
-      {!isPending && <button className="btn">Signup</button>}
-      {isPending && <p className="text-info">Please wait ...</p>}
-    </form>
+        {/* show loading if isPending or show signup button*/}
+        {!isPending && <button className="btn">Signup</button>}
+        {isPending && <p className="text-info">Please wait ...</p>}
+      </form>
+
+      <p className="text-middle">Or signup with</p>
+
+      <button className="btn-social google">G | Google</button>
+      <button className="btn-social facebook">F | Facebook</button>
+    </div>
   );
 };
 
