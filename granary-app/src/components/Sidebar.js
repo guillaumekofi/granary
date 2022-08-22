@@ -10,16 +10,20 @@ import {Link, NavLink} from "react-router-dom";
 import ProfilePhoto from "./ProfilePhoto";
 import {useAuthContext} from "../hooks/useAuthContext";
 
+// firebase imports
+import { useUsername } from "../hooks/useUsername";
+
 const Sidebar = () => {
   const { user } = useAuthContext();
+  const {username, error} = useUsername('users', user.uid);
 
   return (
     <div className="sidebar">
       <div className="sidebar-content">
         <div className="user">
-          <ProfilePhoto />
+          <ProfilePhoto imgSrc={user.photoURL} />
           <h4>Hi, { user.displayName }</h4>
-          <p><Link to="/">@username</Link></p>
+          { !error && <p><Link to="/">@{ username }</Link></p>}
         </div>
 
         <nav className="links">
