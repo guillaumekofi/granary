@@ -31,9 +31,6 @@ const useSignup = () => {
         setError("Unable to complete Signup request... Contact support team!");
       }
 
-      // update the new user with first and last name
-      await updateProfile(res.user, { displayName: `${firstName} ${lastName}` });
-
       // prepare profile photo to save in storage later
       //create path and get image url
       const imgPath = `profile-images/${res.user.uid}/${profileImg.name}`;
@@ -43,15 +40,21 @@ const useSignup = () => {
       // get file download url
       const imgUrl = await getDownloadURL(imgRef);
 
+      // update the new user with displayName and
+      // profile photo url
+      await updateProfile(res.user, {
+        displayName: `${firstName} ${lastName}`,
+        photoURL: imgUrl
+      });
+
       // add the user to users document
       const userRef = await doc(db, 'users', res.user.uid); // get user uid and document
       await setDoc(userRef, {
         firstName,
         lastName,
         username,
-        profileImgURL: imgUrl,
         online: true,
-        dateJoined: timestamp.fromDate(new Date)
+        dateJoined: timestamp.fromDate(new Date())
       });
 
       // dispatch signup action later
