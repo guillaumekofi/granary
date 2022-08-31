@@ -4,6 +4,8 @@ import Alert from "../../components/Alert";
 // react component import
 import React, {useState} from "react";
 import useLogin from "../../hooks/useLogin";
+import useGoogleSignup from "../../hooks/useGoogleSignup";
+import useFacebookSignup from "../../hooks/useFacebookSignup";
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -49,10 +51,10 @@ const Login = () => {
         {isPending && <p className="text-info">Please wait, We are logging you in ...</p>}
       </form>
 
-      <p className="text-middle">Or signup with</p>
+      <p className="text-middle">Or login with</p>
 
-      <button className="btn-social google">G | Google</button>
-      <button className="btn-social facebook">F | Facebook</button>
+      <button onClick={useGoogleSignup} className="btn-social google">G | Google</button>
+      <button onClick={useFacebookSignup} className="btn-social facebook">F | Facebook</button>
     </div>
   );
 };

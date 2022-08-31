@@ -5,6 +5,7 @@ import React, {useState} from 'react';
 import useSignup from "../../hooks/useSignup";
 import Alert from "../../components/Alert";
 import useGoogleSignup from "../../hooks/useGoogleSignup";
+import useFacebookSignup from "../../hooks/useFacebookSignup";
 
 const Signup = () => {
   // create states to handle form
@@ -152,8 +153,8 @@ const Signup = () => {
 
       <p className="text-middle">Or signup with</p>
 
-      <button className="btn-social google">G | Google</button>
-      <button className="btn-social facebook">F | Facebook</button>
+      <button onClick={useGoogleSignup} className="btn-social google">G | Google</button>
+      <button onClick={useFacebookSignup} className="btn-social facebook">F | Facebook</button>
     </div>
   );
 };
