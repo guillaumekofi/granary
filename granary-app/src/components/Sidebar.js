@@ -11,11 +11,11 @@ import ProfilePhoto from "./ProfilePhoto";
 import {useAuthContext} from "../hooks/useAuthContext";
 
 // firebase imports
-import { useUsername } from "../hooks/useUsername";
+import { useUserData } from "../hooks/useUserData";
 
 const Sidebar = () => {
   const { user } = useAuthContext();
-  const {username, error} = useUsername('users', user.uid);
+  const { dateJoined, username, error } = useUserData('users', user.uid);
 
   return (
     <div className="sidebar">
@@ -24,6 +24,7 @@ const Sidebar = () => {
           <ProfilePhoto imgSrc={user.photoURL} />
           <h4>Hi, { user.displayName }</h4>
           { !error && <p><Link to="/">@{ username }</Link></p>}
+          { !error && <p><Link to="/">@{ dateJoined }</Link></p>}
         </div>
 
         <nav className="links">
