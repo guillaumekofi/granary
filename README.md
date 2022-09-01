@@ -3,6 +3,7 @@ This is a school project I worked on with a team of four members using C# and .N
 We barely built the whole application as part of a web development class. After working on a few React projects,
 I have decided to build the app using React and Firebase. In addition of the features we defined in class, I extended/added 
 features. 
+App link is at the bottom...
 
 ## What is Granary?
 Granary is a social app built for farmers; a platform where farmers can share their common interests. With Granary, farmers
@@ -23,6 +24,7 @@ can also create and track different records about their farms.
 * CSS3
 
 ## App link: 
-https://granary-19b23.web.app/
+                https://granary-19b23.web.app/
+Though, I secured the app Firestore, please use fake data if you want to try it.
         
-        This project is still under development...
+This project is still under development...
