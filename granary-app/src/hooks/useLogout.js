@@ -16,14 +16,15 @@ const useLogout = () => {
 
     try {
       const { uid } = user;
-      // logout user and update online status
-      await signOut(Auth);
 
       // update user online status
       const userRef = await doc(db, 'users', uid);  // get user references
       await updateDoc(userRef, {
         online: false
       });
+
+      // logout user and update online status
+      await signOut(Auth);
 
       // dispatch logout action
       dispatch({ type: 'LOGOUT' });
