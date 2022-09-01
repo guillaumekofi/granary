@@ -8,7 +8,7 @@ import {db} from "../firebase/config";
 export const useUserData = (collection, userId) => {
   const [error, setError] = useState(null);  // catch errors
   const [username, setUsername] = useState('')  // username initial state
-  const [dateJoined, setDateJoined] = useState('')  // date joined initial state
+  const [dateJoined, setDateJoined] = useState(null)  // date joined initial state
 
   // realtime data for user document by current user uid
   useEffect(() => {
@@ -21,7 +21,7 @@ export const useUserData = (collection, userId) => {
         // set username if data exists
         setUsername(snapshot.data().username);
         // set date joined
-        setDateJoined(snapshot.data().dateJoined.toDate().toDateString());
+        setDateJoined(snapshot.data().dateJoined.toDate());
         setError(null); // no error
       } else {
         setError("Something went wrong!");
