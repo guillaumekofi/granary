@@ -27,6 +27,11 @@
     color: #fff;
     text-decoration: none;
 }
+
+.sidebar .joined {
+    color: #ddd;
+    font-size: 14px;
+}
 .sidebar .links {
     margin-top: 80px;
     margin-left: 20px;
