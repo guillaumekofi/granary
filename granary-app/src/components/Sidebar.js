@@ -13,6 +13,8 @@ import {useAuthContext} from "../hooks/useAuthContext";
 // firebase imports
 import { useUserData } from "../hooks/useUserData";
 
+import { formatDistance } from 'date-fns';
+
 const Sidebar = () => {
   const { user } = useAuthContext();
   const { dateJoined, username, error } = useUserData('users', user.uid);
@@ -24,7 +26,7 @@ const Sidebar = () => {
           <ProfilePhoto imgSrc={user.photoURL} />
           <h4>Hi, { user.displayName }</h4>
           { !error && <p><Link to="/">@{ username }</Link></p>}
-          { !error && <p><Link to="/">@{ dateJoined }</Link></p>}
+          { !error && <p className="joined">joined { formatDistance(new Date(dateJoined).getTime(), new Date()) } ago</p>}
         </div>
 
         <nav className="links">
